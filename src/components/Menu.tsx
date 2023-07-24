@@ -1,5 +1,11 @@
-import { BadgeHelp, BookOpen, Settings, TimerReset } from "lucide-react";
+import {
+  ClockIcon,
+  Cog8ToothIcon,
+  PencilIcon,
+  QuestionMarkCircleIcon,
+} from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router-dom";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 
 const Menu = () => {
   const location = useLocation();
@@ -7,39 +13,52 @@ const Menu = () => {
   const rotas = [
     {
       href: "/",
-      icon: <BookOpen className="icon" />,
+      icon: <PencilIcon className="h-5" />,
       isActive: location.pathname === "/",
+      tooltip: 'Anotações'
     },
     {
       href: "/repeticao",
-      icon: <TimerReset className="icon" />,
+      icon: <ClockIcon className="h-5" />,
       isActive: location.pathname === "/repeticao",
+      tooltip: 'Repetição Espaçada'
     },
     {
       href: "/ajuda",
-      icon: <BadgeHelp className="icon" />,
+      icon: <QuestionMarkCircleIcon className="h-5" />,
       isActive: location.pathname === "/ajuda",
+      tooltip: 'Ajuda'
     },
     {
       href: "/configuracoes",
-      icon: <Settings className="icon" />,
+      icon: <Cog8ToothIcon className="h-5" />,
       isActive: location.pathname === "/configuracoes",
+      tooltip: 'Configurações'
     },
   ];
 
   return (
-    <aside className="h-full bg-zinc-900 flex items-end w-10">
+    <aside className="h-full bg-primaryDark-900 flex items-end">
       <nav className="flex w-full flex-col">
         {rotas.map((rota) => (
-          <Link
-            to={rota.href}
-            key={rota.href}
-            className={`flex justify-center p-2 hover:bg-zinc-800 text-white ${
-              rota.isActive ? "bg-zinc-800" : ""
-            }`}
-          >
-            {rota.icon}
-          </Link>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link
+                  to={rota.href}
+                  key={rota.href}
+                  className={`flex justify-center p-2 hover:bg-primaryDark-800 text-white ${
+                    rota.isActive ? "bg-primaryDark-800" : ""
+                  }`}
+                >
+                  {rota.icon}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{rota.tooltip}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         ))}
       </nav>
     </aside>
