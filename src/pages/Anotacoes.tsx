@@ -1,9 +1,11 @@
+import EditorWrapper from "../components/EditorWrapper";
 import Explorer from "../components/Explorer";
 
 const Anotacoes = () => {
   return (
-    <section>
+    <section className="flex w-full">
       <Explorer />
+      <EditorWrapper />
     </section>
   );
 };
