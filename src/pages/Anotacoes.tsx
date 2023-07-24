@@ -1,5 +1,11 @@
+import Explorer from "../components/Explorer";
+
 const Anotacoes = () => {
-  return <div>Anotacoes</div>;
+  return (
+    <section>
+      <Explorer />
+    </section>
+  );
 };
 
 export default Anotacoes;
