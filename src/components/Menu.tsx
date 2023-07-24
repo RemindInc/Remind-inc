@@ -38,7 +38,7 @@ const Menu = () => {
   ];
 
   return (
-    <aside className="h-full bg-primaryDark-900 flex items-end">
+    <aside className="h-full bg-zinc-900 flex items-end">
       <nav className="flex w-full flex-col">
         {rotas.map((rota) => (
           <TooltipProvider>
@@ -47,8 +47,8 @@ const Menu = () => {
                 <Link
                   to={rota.href}
                   key={rota.href}
-                  className={`flex justify-center p-2 hover:bg-primaryDark-800 text-white ${
-                    rota.isActive ? "bg-primaryDark-800" : ""
+                  className={`flex justify-center p-2 hover:bg-zinc-800 text-white ${
+                    rota.isActive ? "bg-zinc-800" : ""
                   }`}
                 >
                   {rota.icon}
