@@ -1,6 +1,10 @@
+import ExplorerActions from "./ExplorerActions";
+
 const Explorer = () => {
   return (
-    <section className="h-screen w-[300px] bg-zinc-900 border-r border-r-zinc-600"></section>
+    <section className="h-screen w-[250px] bg-zinc-900 border-r border-r-zinc-600">
+      <ExplorerActions />
+    </section>
   );
 };
 
