@@ -30,6 +30,10 @@ export default {
           900: "#111111",
           800: "#1F1F1F",
         },
+        titleBar: {
+          600: "#7952CB",
+          700: "#5632A1",
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

@@ -24,6 +24,20 @@
         "renameFile": true,
         "scope": ["$DOCUMENT/remind"],
         "writeFile": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
+      },
+      "os": {
+        "all": true
       }
     },
     "bundle": {
@@ -67,11 +81,13 @@
     },
     "windows": [
       {
-        "fullscreen": false,
+        "fullscreen": true,
         "height": 600,
         "resizable": true,
         "title": "remind",
-        "width": 800
+        "width": 800,
+        "decorations":false,
+        "transparent": true
       }
     ]
   }
