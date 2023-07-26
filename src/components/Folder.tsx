@@ -10,13 +10,25 @@ const Folder: FC<TreeNode> = ({ path, children }) => {
     setIsOpen(!isOpen);
   };
 
+  const getLastPartOfFilePath = (filePath: string) => {
+    if (!filePath) {
+      return "";
+    }
+
+    const parts = filePath.split("\\");
+    const lastPart = parts[parts.length - 1];
+    return lastPart;
+  };
+
   return (
     <div>
       <button className="flex items-center" onClick={openCloseFolder}>
         <ChevronRightIcon
           className={`text-zinc-400 h-3 ${isOpen ? "transform rotate-90" : ""}`}
         />
-        <span className="text-zinc-300 text-xs ml-2">{path}</span>
+        <span className="text-zinc-300 text-xs ml-2">
+          {getLastPartOfFilePath(path)}
+        </span>
       </button>
       {children && (
         <div

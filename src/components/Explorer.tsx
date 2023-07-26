@@ -18,7 +18,7 @@ const Explorer = () => {
 
     setFileTree(fileTreeData);
   };
-
+  
   useEffect(() => {
     readFileTree();
   }, []);

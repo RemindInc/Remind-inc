@@ -23,11 +23,7 @@ pub(crate) fn build_tree(root_path: PathBuf) -> TreeNode {
 }
 
 fn build_tree_recursive(path: &PathBuf) -> TreeNode {
-    let path_string = path
-        .file_name()
-        .unwrap_or_else(|| path.as_os_str())
-        .to_string_lossy()
-        .to_string();
+    let path_string = path.as_path().to_string_lossy().to_string();
 
     let is_folder = path.is_dir();
     let mut current_node = TreeNode::new(path_string, is_folder);
