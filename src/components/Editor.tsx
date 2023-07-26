@@ -11,7 +11,7 @@ const Editor: FC<EditorProps> = ({ markdown, setMarkdown }) => {
     <MDEditor
       value={markdown}
       autoSave="true"
-      className="!h-[calc(100vh-113px)] mx-2 !bg-zinc-900 !text-sm"
+      className="!h-[calc(100vh-124px)] mx-2 !bg-zinc-900 !text-sm"
       onChange={(value) => setMarkdown(value!)}
       previewOptions={{
         style: {
