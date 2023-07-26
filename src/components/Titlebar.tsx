@@ -32,9 +32,8 @@ const Titlebar: React.FC = () => {
 
   return (
     <div className="w-full flex items-center justify-between bg-zinc-900 border-b border-b-zinc-800">
-      <div className="flex items-center gap-2 mx-3 my-1">
-        <Icons.Logo />
-        <span className="font-semibold text-white">Remind</span>
+      <div className="flex items-center my-1">
+        <Icons.Logo className="h-6"/>
       </div>
       <div className="flex justify-end">
         <button onClick={handleMinimize} className="hover:bg-zinc-800">
