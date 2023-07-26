@@ -85,9 +85,17 @@
         "height": 600,
         "resizable": true,
         "title": "remind",
+        "transparent": true,
         "width": 800,
-        "decorations":false,
-        "transparent": true
+        "decorations": false,
+        "visible": false
+      },
+      {
+        "width": 400,
+        "height": 200,
+        "decorations": false,
+        "url": "splashscreen.html",
+        "label": "splashscreen"
       }
     ]
   }

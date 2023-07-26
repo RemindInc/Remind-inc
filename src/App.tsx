@@ -3,6 +3,7 @@ import Menu from "./components/Menu";
 import Titlebar from "./components/Titlebar";
 import { useEffect, useState } from "react";
 import { type } from "@tauri-apps/api/os";
+import { invoke } from "@tauri-apps/api";
 
 function App() {
   const [OS, setOS] = useState("");
@@ -14,6 +15,7 @@ function App() {
 
   useEffect(() => {
     setOSType();
+    invoke("close_splashscreen");
   });
 
   return (
@@ -28,3 +30,5 @@ function App() {
 }
 
 export default App;
+
+''
