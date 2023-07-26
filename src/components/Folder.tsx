@@ -1,8 +1,7 @@
 import { FC, useState } from "react";
 import { TreeNode } from "./Explorer";
 import File from "./File";
-import { ChevronRightIcon, FolderOpenIcon } from "@heroicons/react/24/outline";
-import { FolderIcon } from "lucide-react";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const Folder: FC<TreeNode> = ({ path, children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,16 +16,13 @@ const Folder: FC<TreeNode> = ({ path, children }) => {
         <ChevronRightIcon
           className={`text-zinc-400 h-3 ${isOpen ? "transform rotate-90" : ""}`}
         />
-        {isOpen ? (
-          <FolderOpenIcon className="h-4 text-zinc-300 ml-2" />
-        ) : (
-          <FolderIcon className="h-4 text-zinc-300 ml-1" />
-        )}
         <span className="text-zinc-300 text-xs ml-2">{path}</span>
       </button>
       {children && (
         <div
-          className={`ml-3 mt-2 ${isOpen ? "flex flex-col gap-2" : "hidden"}`}
+          className={`mt-2 border-l border-l-zinc-800 pl-3 ml-1.5 ${
+            isOpen ? "flex flex-col gap-2" : "hidden"
+          }`}
         >
           {children.map((node) => (
             <>

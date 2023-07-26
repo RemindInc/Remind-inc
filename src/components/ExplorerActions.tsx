@@ -1,5 +1,4 @@
 import {
-  MagnifyingGlassIcon,
   TagIcon,
   BookmarkIcon,
   PencilSquareIcon,
@@ -15,39 +14,33 @@ import {
 const ExplorerActions = () => {
   const actions = [
     {
-      desc: "Pesquisar",
-      icon: (
-        <MagnifyingGlassIcon className="text-white h-6 p-1 hover:bg-zinc-900 rounded-full" />
-      ),
-    },
-    {
       desc: "Tags",
       icon: (
-        <TagIcon className="text-white h-6 p-1 hover:bg-zinc-900 rounded-full" />
+        <TagIcon className="text-white h-6 p-1 hover:bg-zinc-800 rounded-full" />
       ),
     },
     {
       desc: "Favoritos",
       icon: (
-        <BookmarkIcon className="text-white h-6 p-1 hover:bg-zinc-900 rounded-full" />
+        <BookmarkIcon className="text-white h-6 p-1 hover:bg-zinc-800 rounded-full" />
       ),
     },
     {
       desc: "Nova Anotação",
       icon: (
-        <PencilSquareIcon className="text-white h-6 p-1 hover:bg-zinc-900 rounded-full" />
+        <PencilSquareIcon className="text-white h-6 p-1 hover:bg-zinc-800 rounded-full" />
       ),
     },
     {
       desc: "Nova Pasta",
       icon: (
-        <FolderPlusIcon className="text-white h-6 p-1 hover:bg-zinc-900 rounded-full" />
+        <FolderPlusIcon className="text-white h-6 p-1 hover:bg-zinc-800 rounded-full" />
       ),
     },
   ];
 
   return (
-    <div className="flex justify-between py-0.5 px-7 mx-auto border-b border-b-zinc-600 rounded-full">
+    <div className="flex justify-center gap-8 py-1 px-7 mx-auto">
       {actions.map((action) => (
         <TooltipProvider>
           <Tooltip>
