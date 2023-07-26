@@ -3,7 +3,7 @@ import Explorer from "../components/Explorer";
 
 const Anotacoes = () => {
   return (
-    <section className="flex w-full">
+    <section className="flex w-full bg-transparent">
       <Explorer />
       <EditorWrapper />
     </section>

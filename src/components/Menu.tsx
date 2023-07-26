@@ -38,7 +38,7 @@ const Menu = () => {
   ];
 
   return (
-    <aside className="h-full bg-zinc-900 flex items-end">
+    <aside className="h-full bg-zinc-900/95 bg-clip-padding backdrop-filter backdrop-blur-lg flex items-end">
       <nav className="flex w-full flex-col">
         {rotas.map((rota) => (
           <TooltipProvider>

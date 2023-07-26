@@ -7,7 +7,6 @@ import {
   VscChromeMaximize,
   VscChromeRestore,
 } from "react-icons/vsc";
-
 import '../index.css'
 
 const Titlebar: React.FC = () => {
@@ -32,18 +31,18 @@ const Titlebar: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-between bg-titleBar-600/95  titlebar">
-      <div className="flex items-center gap-2 mx-3">
+    <div className="w-full flex items-center justify-between bg-zinc-900 border-b border-b-zinc-800">
+      <div className="flex items-center gap-2 mx-3 my-1">
         <Icons.Logo />
         <span className="font-semibold text-white">Remind</span>
       </div>
       <div className="flex justify-end">
-        <button onClick={handleMinimize} className="hover:bg-titleBar-700">
+        <button onClick={handleMinimize} className="hover:bg-zinc-800">
           <VscChromeMinimize className="w-10 h-6 p-1.5 text-white" />
         </button>
         <button
           onClick={handleMaximizeRestore}
-          className="hover:bg-titleBar-700"
+          className="hover:bg-zinc-800"
         >
           {winState === "maximized" ? (
             <VscChromeRestore className="w-10 h-6 p-1.5 text-white" />

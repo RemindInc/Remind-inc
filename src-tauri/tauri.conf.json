@@ -84,7 +84,7 @@
         "fullscreen": true,
         "height": 600,
         "resizable": true,
-        "title": "remind",
+        "title": "",
         "transparent": true,
         "width": 800,
         "decorations": false,

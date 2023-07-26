@@ -1,5 +1,5 @@
 const EditorWrapper = () => {
-  return <section className="w-full h-[calc(100vh-24px)] bg-zinc-800">
+  return <section className="w-full h-[calc(100vh-34px)] bg-zinc-900">
   </section>;
 };
 

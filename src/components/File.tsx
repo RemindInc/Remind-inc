@@ -4,7 +4,7 @@ import { DocumentTextIcon } from "@heroicons/react/24/outline";
 
 const File: FC<TreeNode> = ({ path }) => {
   return (
-    <div className="text-sm text-zinc-300 flex items-center gap-2">
+    <div className="text-xs text-zinc-300 flex items-center gap-2">
       <DocumentTextIcon className="h-4" />
       <span className="text-sm">{path}</span>
     </div>

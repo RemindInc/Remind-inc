@@ -22,7 +22,7 @@ const Folder: FC<TreeNode> = ({ path, children }) => {
         ) : (
           <FolderIcon className="h-4 text-zinc-300 ml-1" />
         )}
-        <span className="text-zinc-300 text-sm ml-2">{path}</span>
+        <span className="text-zinc-300 text-xs ml-2">{path}</span>
       </button>
       {children && (
         <div

@@ -24,7 +24,7 @@ const Explorer = () => {
   }, []);
 
   return (
-    <section className="h-[calc(100vh-24px)] w-[250px] bg-zinc-800 border-r border-r-zinc-600">
+    <section className="h-[calc(100vh-34px)] w-[250px] bg-zinc-900/95 bg-clip-padding backdrop-filter backdrop-blur-lg  border-x border-zinc-800">
       <ExplorerActions />
       <div className="p-3 flex flex-col gap-4 my-2 w-[300px] mx-auto">
         {fileTree?.children.map((node) => (
