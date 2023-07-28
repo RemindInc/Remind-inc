@@ -5,7 +5,7 @@ import NoteActions from "./NoteActions";
 const EditorWrapper = () => {
   const [markdown, setMarkdown] = useState<string | undefined>(``);
   return (
-    <section className="w-full h-[calc(100vh-34px)] bg-zinc-900">
+    <section className="w-full h-[calc(100vh-70px)] bg-zinc-900">
       <input
         type="text"
         className="w-full bg-zinc-900 text-3xl text-zinc-300 font-bold px-2 py-1 focus:outline-none"
