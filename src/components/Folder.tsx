@@ -1,13 +1,25 @@
 import { FC, useState } from "react";
-import { TreeNode } from "./Explorer";
 import File from "./File";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import { TreeNode } from "./Explorer";
 
-const Folder: FC<TreeNode> = ({ path, children }) => {
+interface SelectedNode extends TreeNode {
+  selectedNode: TreeNode;
+  setSelectedNode: (node: TreeNode) => void;
+}
+
+const Folder: FC<SelectedNode> = ({
+  path,
+  children,
+  is_folder,
+  selectedNode,
+  setSelectedNode,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openCloseFolder = () => {
     setIsOpen(!isOpen);
+    setSelectedNode({ path, children, is_folder });
   };
 
   const getLastPartOfFilePath = (filePath: string) => {
@@ -22,11 +34,16 @@ const Folder: FC<TreeNode> = ({ path, children }) => {
 
   return (
     <div>
-      <button className="flex items-center" onClick={openCloseFolder}>
+      <button
+        className={`flex items-center py-1 px-2 rounded-md ${
+          selectedNode?.path === path ? "bg-zinc-600/30" : ""
+        }`}
+        onClick={openCloseFolder}
+      >
         <ChevronRightIcon
           className={`text-zinc-400 h-3 ${isOpen ? "transform rotate-90" : ""}`}
         />
-        <span className="text-zinc-300 text-xs ml-2">
+        <span className={`text-zinc-300 text-xs ml-2`}>
           {getLastPartOfFilePath(path)}
         </span>
       </button>
@@ -39,9 +56,19 @@ const Folder: FC<TreeNode> = ({ path, children }) => {
           {children.map((node) => (
             <>
               {node.is_folder ? (
-                <Folder {...node} key={node.path} />
+                <Folder
+                  {...node}
+                  key={node.path}
+                  selectedNode={selectedNode}
+                  setSelectedNode={setSelectedNode}
+                />
               ) : (
-                <File {...node} key={node.path} />
+                <File
+                  {...node}
+                  key={node.path}
+                  selectedNode={selectedNode}
+                  setSelectedNode={setSelectedNode}
+                />
               )}
             </>
           ))}

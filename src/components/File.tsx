@@ -1,7 +1,18 @@
 import { FC } from "react";
 import { TreeNode } from "./Explorer";
 
-const File: FC<TreeNode> = ({ path }) => {
+interface SelectedNode extends TreeNode {
+  selectedNode: TreeNode;
+  setSelectedNode: (node: TreeNode) => void;
+}
+
+const File: FC<SelectedNode> = ({
+  path,
+  children,
+  is_folder,
+  selectedNode,
+  setSelectedNode,
+}) => {
   const getLastPartOfFilePath = (filePath: string) => {
     if (!filePath) {
       return "";
@@ -12,8 +23,19 @@ const File: FC<TreeNode> = ({ path }) => {
     return lastPart;
   };
 
+  const selectNode = () => {
+    setSelectedNode({ path, children, is_folder });
+  };
+
   return (
-    <span className="text-xs text-zinc-300">{getLastPartOfFilePath(path)}</span>
+    <button
+      onClick={selectNode}
+      className={`text-xs inline-flex  py-1 px-2 rounded-md text-zinc-300 ${
+        selectedNode?.path === path ? "bg-zinc-600/30" : ""
+      }`}
+    >
+      {getLastPartOfFilePath(path)}
+    </button>
   );
 };
 

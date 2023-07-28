@@ -10,8 +10,15 @@ export interface TreeNode {
   is_folder: boolean;
 }
 
+const initialState = {
+  path: "C:\\Users\\David\\Documents\\remind",
+  children: [],
+  is_folder: true,
+};
+
 const Explorer = () => {
   const [fileTree, setFileTree] = useState<TreeNode>();
+  const [selectedNode, setSelectedNode] = useState<TreeNode>(initialState);
 
   const readFileTree = async () => {
     const fileTreeData: TreeNode = await invoke("read_file_tree");
@@ -27,12 +34,30 @@ const Explorer = () => {
     <section className="h-[calc(100vh-34px)] w-[300px] flex flex-col items-center bg-zinc-900/95 bg-clip-padding backdrop-filter backdrop-blur-lg  border-x border-zinc-800">
       <ExplorerActions />
       <div className="px-3 py-0.5 flex flex-col gap-4 my-4 w-[225px]">
+        <button
+          onClick={() => setSelectedNode(initialState)}
+          className={`text-zinc-100 font-medium text-sm py-1 px-2 inline-flex rounded-md ${
+            selectedNode.path === initialState.path ? "bg-zinc-600/30" : ""
+          }`}
+        >
+          Remind
+        </button>
         {fileTree?.children.map((node) => (
           <>
             {node.is_folder ? (
-              <Folder key={node.path} {...node} />
+              <Folder
+                key={node.path}
+                {...node}
+                selectedNode={selectedNode}
+                setSelectedNode={setSelectedNode}
+              />
             ) : (
-              <File key={node.path} {...node} />
+              <File
+                key={node.path}
+                {...node}
+                selectedNode={selectedNode}
+                setSelectedNode={setSelectedNode}
+              />
             )}
           </>
         ))}
