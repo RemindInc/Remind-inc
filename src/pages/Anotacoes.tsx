@@ -16,20 +16,7 @@ export interface Anotacao {
 }
 
 const Anotacoes = () => {
-  const [anotacoes, setAnotacoes] = useState<Anotacao[]>([
-    {
-      title: "Teste1",
-      content: "testano",
-    },
-    {
-      title: "Teste2",
-      content: "testano",
-    },
-    {
-      title: "Teste3",
-      content: "testano",
-    },
-  ]);
+  const [anotacoes, setAnotacoes] = useState<Anotacao[]>([]);
 
   const closeTab = (e: React.MouseEvent<HTMLButtonElement>) => {
     const updatedAnotacoes = anotacoes.filter(
@@ -71,7 +58,7 @@ const Anotacoes = () => {
                 value={anotacao.title}
                 aria-checked={true}
               >
-                <EditorWrapper />
+                <EditorWrapper {...anotacao}/>
               </TabsContent>
             ))}
           </Tabs>
