@@ -8,6 +8,7 @@ import {
 } from "../components/ui/tabs";
 import EditorWrapper from "../components/EditorWrapper";
 import { XIcon } from "lucide-react";
+import { AnotacoesContext } from "../context/AnotacoesContext";
 
 export interface Anotacao {
   title: string;
@@ -29,19 +30,6 @@ const Anotacoes = () => {
       content: "testano",
     },
   ]);
-  const AnotacoesContext = React.createContext({ anotacoes, setAnotacoes });
-
-  const adicionarAnotacao = () => {
-    alert("te");
-    const anotacao = {
-      title: "Teste",
-      content: "testano",
-    };
-
-    const updatedAnotacoes = [...anotacoes, anotacao];
-
-    setAnotacoes(updatedAnotacoes);
-  };
 
   const closeTab = (e: React.MouseEvent<HTMLButtonElement>) => {
     const updatedAnotacoes = anotacoes.filter(
@@ -51,12 +39,15 @@ const Anotacoes = () => {
   };
 
   return (
-    <section className="flex w-full bg-transparent">
+    <section className="flex w-full bg-zinc-900">
       <AnotacoesContext.Provider value={{ anotacoes, setAnotacoes }}>
         <Explorer />
         {anotacoes.length > 0 ? (
           <Tabs defaultValue={anotacoes[0].title} className="w-full">
-            <TabsList className="w-full bg-zinc-900 rounded-none items-start">
+            <TabsList
+              id="tab-list"
+              className="w-full bg-zinc-900 rounded-none items-start"
+            >
               {anotacoes.map((anotacao) => (
                 <TabsTrigger
                   value={anotacao.title}
@@ -75,22 +66,20 @@ const Anotacoes = () => {
               ))}
             </TabsList>
             {anotacoes.map((anotacao) => (
-              <TabsContent className="w-full" value={anotacao.title}>
+              <TabsContent
+                className="w-full bg-zinc-900"
+                value={anotacao.title}
+                aria-checked={true}
+              >
                 <EditorWrapper />
               </TabsContent>
             ))}
           </Tabs>
         ) : (
           <section className="w-full h-full bg-zinc-900 flex justify-center items-center flex-col">
-            <h3 className="text-3xl text-zinc-400 font-bold w-[400px] text-center leading-10">
+            <h3 className="text-2xl text-zinc-400 font-bold w-[400px] text-center leading-10">
               Abra ou crie uma nova anotação para começar a editar.
             </h3>
-            <button
-              onClick={adicionarAnotacao}
-              className="bg-zinc-200 font-bold p-2 z-50"
-            >
-              Adicionar anotação
-            </button>
           </section>
         )}
       </AnotacoesContext.Provider>

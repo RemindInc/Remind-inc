@@ -22,7 +22,7 @@
         "removeDir": true,
         "removeFile": true,
         "renameFile": true,
-        "scope": ["$DOCUMENT/remind"],
+        "scope": ["$DOCUMENT/**"],
         "writeFile": true
       },
       "window": {
