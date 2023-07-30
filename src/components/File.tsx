@@ -1,7 +1,13 @@
 import { FC, useContext } from "react";
 import { TreeNode } from "./Explorer";
 import { AnotacoesContext } from "../context/AnotacoesContext";
-import { readTextFile, BaseDirectory } from "@tauri-apps/api/fs";
+import { readTextFile, BaseDirectory, removeFile } from "@tauri-apps/api/fs";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuTrigger,
+} from "./ui/context-menu";
+import { Trash2 } from "lucide-react";
 
 interface SelectedNode extends TreeNode {
   selectedNode: TreeNode;
@@ -54,16 +60,38 @@ const File: FC<SelectedNode> = ({
     setSelectedNode({ path, children, is_folder });
   };
 
+  const deleteFile = async () => {
+    await removeFile(getPath(path), { dir: BaseDirectory.Document });
+    const updatedNotes = anotacoes.filter(
+      (anotacao) => anotacao.title !== getLastPartOfFilePath(path)
+    );
+    
+    setAnotacoes(updatedNotes);
+  };
+
   return (
-    <button
-      onClick={selectNode}
-      onDoubleClick={openFile}
-      className={`text-xs inline-flex  py-1 px-2 rounded-md text-zinc-300 ${
-        selectedNode?.path === path ? "bg-zinc-600/30" : ""
-      }`}
-    >
-      {getLastPartOfFilePath(path)}
-    </button>
+    <ContextMenu>
+      <ContextMenuTrigger>
+        <button
+          onClick={selectNode}
+          onDoubleClick={openFile}
+          className={`text-xs inline-flex  py-1 px-2 rounded-md text-zinc-300 ${
+            selectedNode?.path === path ? "bg-zinc-600/30" : ""
+          }`}
+        >
+          {getLastPartOfFilePath(path)}
+        </button>
+      </ContextMenuTrigger>
+      <ContextMenuContent className="bg-zinc-900 border border-zinc-800 absolute top-3 min-w-max flex flex-col justify-center">
+        <button
+          onClick={deleteFile}
+          className="flex justify-center items-center gap-1 text-zinc-300 text-xs hover:bg-zinc-800 p-3 rounded-md"
+        >
+          <Trash2 className="h-3" />
+          <span className="pr-1.5">Deletar arquivo</span>
+        </button>
+      </ContextMenuContent>
+    </ContextMenu>
   );
 };
 
