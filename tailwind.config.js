@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+import typography from "@tailwindcss/typography";
+import animate from "tailwindcss-animate";
+
 export default {
   darkMode: ["class"],
   content: [
@@ -80,5 +83,5 @@ export default {
       },
     },
   },
-  plugins: [import("tailwindcss-animate")],
+  plugins: [animate, typography],
 };

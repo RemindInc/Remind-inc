@@ -1,24 +1,28 @@
 import { FC } from "react";
-import MDEditor from "@uiw/react-md-editor";
+import { useEditor, EditorContent } from "@tiptap/react";
+import { Markdown } from 'tiptap-markdown';
+import StarterKit from "@tiptap/starter-kit";
 
 interface EditorProps {
   markdown: string | undefined;
   setMarkdown: (markdown: string) => void;
 }
 
-const Editor: FC<EditorProps> = ({ markdown, setMarkdown }) => {
+const Editor: FC<EditorProps> = ({ markdown }) => {
+  const editor = useEditor({
+    extensions: [StarterKit, Markdown],
+    content: markdown,
+    editorProps: {
+      attributes: {
+        class: 'outline-none h-full'
+      }
+    }
+  });
+
   return (
-    <MDEditor
-      value={markdown}
-      autoSave="true"
-      className="!h-[calc(100vh-160px)] mx-2 !bg-zinc-900 !text-sm"
-      onChange={(value) => setMarkdown(value!)}
-      previewOptions={{
-        style: {
-          background: "#18181B",
-          height: "100%",
-        },
-      }}
+    <EditorContent
+      editor={editor}
+      className="!h-[calc(100vh-163px)] mx-2 !bg-zinc-900 !text-sm prose prose-invert prose-sm"
     />
   );
 };
