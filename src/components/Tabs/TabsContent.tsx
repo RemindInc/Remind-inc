@@ -1,4 +1,4 @@
-import { FC, ReactNode, useContext, useEffect, useState } from "react";
+import { FC, ReactNode, useContext } from "react";
 import { TabsContext } from "../../context/TabsContext";
 
 interface TabsContentProps {
@@ -9,14 +9,8 @@ interface TabsContentProps {
 const TabsContent: FC<TabsContentProps> = ({ index, children }) => {
   const { activeTab } = useContext(TabsContext);
 
-  const [tab, setTab] = useState<number>();
-
-  useEffect(() => {
-    setTab(activeTab);
-  }, [activeTab])
-
   return (
-    <div className={`${index === tab ? "block" : "hidden"}`}>
+    <div className={`${index === activeTab ? "block" : "hidden"}`}>
       {children}
     </div>
   );
