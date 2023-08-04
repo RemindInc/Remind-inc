@@ -5,7 +5,7 @@ interface TabsListProps {
 }
 
 const TabsList: FC<TabsListProps> = ({ children }) => {
-  return <div className="w-full p-2 flex items-center">{children}</div>;
+  return <div className="w-full p-1 flex items-center">{children}</div>;
 };
 
 export default TabsList;
