@@ -31,18 +31,18 @@ const Titlebar: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-between bg-zinc-900 border-b border-b-zinc-800">
-      <div className="flex items-center my-1">
+    <div className="w-full flex items-center justify-between bg-titleBar-600">
+      <div className="flex items-center">
         <Icons.Logo className="h-6"/>
         <h4 className="text-white font-medium">Remind</h4>
       </div>
       <div className="flex justify-end">
-        <button onClick={handleMinimize} className="hover:bg-zinc-800">
+        <button onClick={handleMinimize} className="hover:bg-titleBar-700">
           <VscChromeMinimize className="w-10 h-6 p-1.5 text-white" />
         </button>
         <button
           onClick={handleMaximizeRestore}
-          className="hover:bg-zinc-800"
+          className="hover:bg-titleBar-700"
         >
           {winState === "maximized" ? (
             <VscChromeRestore className="w-10 h-6 p-1.5 text-white" />
