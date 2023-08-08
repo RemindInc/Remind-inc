@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="w-full bg-transparent">
       {OS === "Windows_NT" && <Titlebar />}
-      <div className="h-[calc(100vh-34px)] flex bg-transparent">
+      <div className="flex bg-transparent h-[calc(100vh-25px)]">
         <Menu />
         <Outlet />
       </div>

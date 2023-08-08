@@ -6,7 +6,7 @@ import { Anotacao } from "../pages/Anotacoes";
 const EditorWrapper: FC<Anotacao> = ({ title, content }) => {
   const [markdown, setMarkdown] = useState<string>(content);
   return (
-    <section className="w-full h-[calc(100vh-70px)] bg-zinc-900">
+    <section className="w-full bg-zinc-900">
       <input
         defaultValue={title}
         type="text"
