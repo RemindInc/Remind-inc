@@ -4,6 +4,7 @@ import Folder from "./Folder";
 import File from "./File";
 import { invoke } from "@tauri-apps/api/tauri";
 import { AnotacoesContext } from "../context/AnotacoesContext";
+import { OpenExplorerContext } from "../context/OpenExplorerContext";
 
 export interface TreeNode {
   path: string;
@@ -18,6 +19,7 @@ const initialState = {
 };
 
 const Explorer = () => {
+  const { isExplorerOpen } = useContext(OpenExplorerContext);
   const [fileTree, setFileTree] = useState<TreeNode>();
   const [selectedNode, setSelectedNode] = useState<TreeNode>(initialState);
   const { anotacoes } = useContext(AnotacoesContext);
@@ -33,7 +35,11 @@ const Explorer = () => {
   }, [anotacoes]);
 
   return (
-    <section className="w-[300px] flex flex-col items-center bg-zinc-900/95 bg-clip-padding backdrop-filter backdrop-blur-lg  border-x border-zinc-800">
+    <section
+      className={`w-[300px] flex-col items-center bg-zinc-900/95 bg-clip-padding backdrop-filter backdrop-blur-lg  border-x border-zinc-800 ${
+        !isExplorerOpen ? "hidden" : "flex"
+      }`}
+    >
       <ExplorerActions selectedNode={selectedNode} />
       <div className="px-3 py-0.5 flex flex-col gap-4 my-4 w-[225px]">
         <button

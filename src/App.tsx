@@ -4,9 +4,11 @@ import Titlebar from "./components/Titlebar";
 import { useEffect, useState } from "react";
 import { type } from "@tauri-apps/api/os";
 import { invoke } from "@tauri-apps/api";
+import { OpenExplorerContext } from "./context/OpenExplorerContext";
 
 function App() {
   const [OS, setOS] = useState("");
+  const [isExplorerOpen, setIsExplorerOpen] = useState(true);
 
   const setOSType = async () => {
     const os = await type();
@@ -16,14 +18,18 @@ function App() {
   useEffect(() => {
     setOSType();
     invoke("close_splashscreen");
-  });
+  }, []);
 
   return (
     <div className="w-full bg-transparent">
       {OS === "Windows_NT" && <Titlebar />}
       <div className="flex bg-transparent h-[calc(100vh-25px)]">
-        <Menu />
-        <Outlet />
+        <OpenExplorerContext.Provider
+          value={{ isExplorerOpen, setIsExplorerOpen }}
+        >
+          <Menu />
+          <Outlet />
+        </OpenExplorerContext.Provider>
       </div>
     </div>
   );
@@ -31,4 +37,4 @@ function App() {
 
 export default App;
 
-''
+("");
